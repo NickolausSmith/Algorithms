@@ -2,9 +2,26 @@
 
 import sys
 
-def climbing_stairs(n):
-  pass
 
+def climbing_stairs(n, cache=None):
+  if not cache:   
+    cache = [0 for i in range(n+1)] # If cache has no value, default cache to an array of zeroes
+  
+  if n < 2:
+      return 1
+  elif n ==2:
+      return 2
+  elif cache[n] > 2: # If more than 2 steps, return the value of cache
+      return  cache[n] # cache[n] is number of ways we can get to n
+  cache[n] = climbing_stairs(n-1, cache) + climbing_stairs(n-2, cache) + climbing_stairs(n-3, cache) # figure it out yourself, god
+  return cache[n]
+
+
+  
+
+
+  
+# print((climbing_stairs(5, 13)))
 
 if __name__ == "__main__":
   # Test out your implementation from the command line
